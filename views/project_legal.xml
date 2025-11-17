@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_project_form_inherit_legal" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.legal</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <!-- Agregamos una pestaña nueva -->
+            <xpath expr="//notebook/page[1]" position="before">
+                <page string="Área Legal">
+                    <group>
+                        <field name="dms_directory_legal_id"/>
+                    </group>
+
+                    <group string="Contratos / Acuerdos">
+                        <field name="agreement_ids">
+                            <tree>
+                                <field name="name"/>
+                                <field name="legal_category"/>
+                                <field name="partner_id"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <!-- si tienes state o stage_id, lo puedes dejar -->
+                                <!-- <field name="state"/> -->
+                            </tree>
+                        </field>
+                    </group>
+
+                    <group string="Tareas legales">
+                        <field name="legal_action_ids">
+                            <tree>
+                                <field name="name"/>
+                                <field name="user_id"/>
+                                <field name="date_deadline"/>
+                                <field name="stage_id"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

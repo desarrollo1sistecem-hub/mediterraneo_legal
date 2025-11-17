@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="action_mgmtsystem_legal_actions" model="ir.actions.act_window">
+        <field name="name">Tareas Legales</field>
+        <field name="res_model">mgmtsystem.action</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('is_legal', '=', True)]</field>
+        <field name="context">{'default_is_legal': True}</field>
+    </record>
+
+    <record id="action_legal_projects" model="ir.actions.act_window">
+        <field name="name">Proyectos (Área Legal)</field>
+        <field name="res_model">project.project</field>
+
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_legal_root"
+              name="Legal"
+              sequence="60"
+              groups="base.group_user"
+              web_icon="mediterraneo_legal,static/description/icon.png"/>
+
+
+    <menuitem id="menu_legal_actions"
+              name="Tablero de Tareas"
+              parent="menu_legal_root"
+              action="action_mgmtsystem_legal_actions"
+              sequence="10"/>
+
+
+    <menuitem id="menu_legal_projects"
+              name="Obras (Legal)"
+              parent="menu_legal_root"
+              action="project.open_view_project_all"
+              sequence="20"/>
+    <menuitem id="menu_legal_projects"
+              name="Proyectos (Legal)"
+              parent="menu_legal_root"
+              action="action_legal_projects"
+              sequence="20"/>
+
+
+    <!-- Acción para ver y crear Acuerdos desde el módulo Legal -->
+    <record id="action_legal_agreements" model="ir.actions.act_window">
+        <field name="name">Contratos legales</field>
+        <field name="res_model">agreement</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="menu_legal_agreements"
+              name="Contratos (Legal)"
+              parent="menu_legal_root"
+              action="action_legal_agreements"
+              sequence="30"/>
+
+    <record id="view_mgmtsystem_action_form_inherit_legal" model="ir.ui.view">
+        <field name="name">mgmtsystem.action.form.inherit.legal</field>
+        <field name="model">mgmtsystem.action</field>
+        <!-- Heredamos el formulario original del módulo mgmtsystem_action -->
+        <field name="inherit_id" ref="mgmtsystem_action.view_mgmtsystem_action_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group" position="after">
+                <group string="Información Legal">
+                    <field name="project_id"/>
+                    <field name="agreement_id"/>
+                    <field name="is_legal"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
