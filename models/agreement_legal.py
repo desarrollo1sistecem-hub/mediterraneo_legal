@@ -34,10 +34,11 @@ class AgreementLegal(models.Model):
     def action_generar_accion_legal(self):
         Action = self.env['mgmtsystem.action']
         for legal in self:
+            responsable_id = legal.assigned_user_id.id if legal.assigned_user_id else self.env.user.id
             action = Action.create({
                 'name': _('Acción legal para Acuerdo %s') % (legal.name or ''),
                 'type_action': 'immediate',
-                'user_id': self.env.user.id,
+                'user_id': responsable_id,
                 'date_deadline': fields.Date.today(),
                 'project_id': legal.project_id.id,
                 'agreement_id': legal.id,

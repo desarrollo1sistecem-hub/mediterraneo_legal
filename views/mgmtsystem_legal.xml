@@ -10,11 +10,19 @@
         <field name="context">{'default_is_legal': True}</field>
     </record>
 
+<!--    <record id="action_legal_projects" model="ir.actions.act_window">-->
+<!--        <field name="name">Proyectos (Área Legal)</field>-->
+<!--        <field name="res_model">project.project</field>-->
+
+<!--        <field name="view_mode">tree,form</field>-->
+<!--    </record>-->
     <record id="action_legal_projects" model="ir.actions.act_window">
         <field name="name">Proyectos (Área Legal)</field>
         <field name="res_model">project.project</field>
-
         <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('project.view_project')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mediterraneo_legal.view_project_legal_contracts_only_form')})]"/>
     </record>
 
     <menuitem id="menu_legal_root"

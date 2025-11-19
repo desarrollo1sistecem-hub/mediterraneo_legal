@@ -18,7 +18,7 @@
             <xpath expr="//form/header" position="inside">
                 <button name="action_generar_accion_legal"
                         type="object"
-                        string="Generar acción legal"
+                        string="Generar Tarea Legal"
                         class="btn-primary"
                         attrs="{'invisible': [('legal_action_id', '!=', False)]}"/>
             </xpath>
