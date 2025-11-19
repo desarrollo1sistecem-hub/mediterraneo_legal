@@ -28,7 +28,7 @@
               name="Tablero de Tareas"
               parent="menu_legal_root"
               action="action_mgmtsystem_legal_actions"
-              sequence="10"/>
+              sequence="20"/>
 
 
     <menuitem id="menu_legal_projects"
@@ -40,7 +40,7 @@
               name="Proyectos (Legal)"
               parent="menu_legal_root"
               action="action_legal_projects"
-              sequence="20"/>
+              sequence="10"/>
 
 
     <!-- Acción para ver y crear Acuerdos desde el módulo Legal -->
