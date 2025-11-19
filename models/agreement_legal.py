@@ -24,26 +24,48 @@ class AgreementLegal(models.Model):
         ('other', 'Otro'),
     ], string='Categoría legal')
 
-    legal_action_id = fields.Many2one(
+    # legal_action_id = fields.Many2one(
+    #     'mgmtsystem.action',
+    #     string='Acción Legal',
+    #     help='Acción legal asociada al acuerdo legal',
+    #     copy=False,
+    # )
+
+    legal_action_ids = fields.One2many(
         'mgmtsystem.action',
-        string='Acción Legal',
-        help='Acción legal asociada al acuerdo legal',
-        copy=False,
+        'agreement_id',  # Este campo ya existe en mgmtsystem_legal.py
+        string='Acciones Legales'
     )
 
+    # def action_generar_accion_legal(self):
+    #     Action = self.env['mgmtsystem.action']
+    #     for legal in self:
+    #         responsable_id = legal.assigned_user_id.id if legal.assigned_user_id else self.env.user.id
+    #         action = Action.create({
+    #             'name': _('Acción legal para Acuerdo %s') % (legal.name or ''),
+    #             'type_action': 'immediate',
+    #             'user_id': responsable_id,
+    #             'date_deadline': fields.Date.today(),
+    #             'project_id': legal.project_id.id,
+    #             'agreement_id': legal.id,
+    #             'is_legal': True,
+    #         })
+    #         legal.legal_action_id = action.id
     def action_generar_accion_legal(self):
         Action = self.env['mgmtsystem.action']
         for legal in self:
+            # Lógica del responsable que vimos antes
             responsable_id = legal.assigned_user_id.id if legal.assigned_user_id else self.env.user.id
-            action = Action.create({
+
+            # Creamos la acción. Al pasar 'agreement_id': legal.id,
+            # se vincula automáticamente a la lista legal_action_ids.
+            Action.create({
                 'name': _('Acción legal para Acuerdo %s') % (legal.name or ''),
                 'type_action': 'immediate',
                 'user_id': responsable_id,
                 'date_deadline': fields.Date.today(),
                 'project_id': legal.project_id.id,
-                'agreement_id': legal.id,
+                'agreement_id': legal.id,  # <--- Esto hace el vínculo
                 'is_legal': True,
             })
-            legal.legal_action_id = action.id
-
 

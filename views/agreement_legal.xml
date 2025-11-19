@@ -1,27 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<odoo>-->
+<!--    <record id="view_agreement_form_inherit_legal" model="ir.ui.view">-->
+<!--        <field name="name">agreement.form.inherit.legal</field>-->
+<!--        <field name="model">agreement</field>-->
+<!--        <field name="inherit_id" ref="agreement_legal.partner_agreement_form_view"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            &lt;!&ndash; Donde insertarnos en el form del agreement &ndash;&gt;-->
+<!--            <xpath expr="//sheet/group" position="inside">-->
+<!--                <group string="Obra y Legal">-->
+<!--                    <field name="project_id"/>-->
+<!--                    <field name="legal_category"/>-->
+<!--                    <field name="dms_directory_id"/>-->
+<!--                    <field name="legal_action_id" readonly="1"/>-->
+<!--                </group>-->
+<!--            </xpath>-->
+
+<!--            <xpath expr="//form/header" position="inside">-->
+<!--                <button name="action_generar_accion_legal"-->
+<!--                        type="object"-->
+<!--                        string="Generar Tarea Legal"-->
+<!--                        class="btn-primary"-->
+<!--                        attrs="{'invisible': [('legal_action_id', '!=', False)]}"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+<!--</odoo>-->
 <odoo>
     <record id="view_agreement_form_inherit_legal" model="ir.ui.view">
         <field name="name">agreement.form.inherit.legal</field>
         <field name="model">agreement</field>
         <field name="inherit_id" ref="agreement_legal.partner_agreement_form_view"/>
         <field name="arch" type="xml">
-            <!-- Donde insertarnos en el form del agreement -->
+
             <xpath expr="//sheet/group" position="inside">
                 <group string="Obra y Legal">
                     <field name="project_id"/>
                     <field name="legal_category"/>
                     <field name="dms_directory_id"/>
-                    <field name="legal_action_id" readonly="1"/>
+
+
                 </group>
             </xpath>
 
             <xpath expr="//form/header" position="inside">
                 <button name="action_generar_accion_legal"
                         type="object"
-                        string="Generar Tarea Legal"
-                        class="btn-primary"
-                        attrs="{'invisible': [('legal_action_id', '!=', False)]}"/>
-            </xpath>
+                        string="Generar Tarea legal"
+                        class="btn-primary"/>
+                </xpath>
         </field>
     </record>
 </odoo>
