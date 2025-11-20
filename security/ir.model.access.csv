@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_mediterraneo_legal_mediterraneo_legal,mediterraneo_legal.mediterraneo_legal,model_mediterraneo_legal_mediterraneo_legal,base.group_user,1,1,1,1
+access_legal_task_type,access_legal_task_type,model_legal_task_type,base.group_user,1,1,1,1
+access_legal_action_create_wizard,access_legal_action_create_wizard,model_legal_action_create_wizard,base.group_user,1,1,1,1

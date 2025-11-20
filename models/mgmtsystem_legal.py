@@ -19,3 +19,8 @@ class MgmtsystemAction(models.Model):
         default=False,
         help='Marca esta acción como perteneciente al área legal.'
     )
+
+    legal_task_type_id = fields.Many2one(
+        'legal.task.type',
+        string='Tipo de tarea legal'
+    )

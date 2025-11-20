@@ -51,21 +51,42 @@ class AgreementLegal(models.Model):
     #             'is_legal': True,
     #         })
     #         legal.legal_action_id = action.id
-    def action_generar_accion_legal(self):
-        Action = self.env['mgmtsystem.action']
-        for legal in self:
-            # Lógica del responsable que vimos antes
-            responsable_id = legal.assigned_user_id.id if legal.assigned_user_id else self.env.user.id
 
-            # Creamos la acción. Al pasar 'agreement_id': legal.id,
-            # se vincula automáticamente a la lista legal_action_ids.
-            Action.create({
-                'name': _('Acción legal para Acuerdo %s') % (legal.name or ''),
-                'type_action': 'immediate',
-                'user_id': responsable_id,
-                'date_deadline': fields.Date.today(),
-                'project_id': legal.project_id.id,
-                'agreement_id': legal.id,  # <--- Esto hace el vínculo
-                'is_legal': True,
-            })
+    #metodo origanl que funciona
+    # def action_generar_accion_legal(self):
+    #     Action = self.env['mgmtsystem.action']
+    #     for legal in self:
+    #         # Lógica del responsable que vimos antes
+    #         responsable_id = legal.assigned_user_id.id if legal.assigned_user_id else self.env.user.id
+    #
+    #         # Creamos la acción. Al pasar 'agreement_id': legal.id,
+    #         # se vincula automáticamente a la lista legal_action_ids.
+    #         Action.create({
+    #             'name': _('Acción legal para Acuerdo %s') % (legal.name or ''),
+    #             'type_action': 'immediate',
+    #             'user_id': responsable_id,
+    #             'date_deadline': fields.Date.today(),
+    #             'project_id': legal.project_id.id,
+    #             'agreement_id': legal.id,  # <--- Esto hace el vínculo
+    #             'is_legal': True,
+    #         })
+
+    def action_generar_accion_legal(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Crear tarea legal'),
+            'res_model': 'legal.action.create.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_agreement_id': self.id,
+                'default_project_id': self.project_id.id,
+                'default_user_id': (
+                    self.assigned_user_id.id
+                    if hasattr(self, 'assigned_user_id') and self.assigned_user_id
+                    else self.env.user.id
+                ),
+            },
+        }
 

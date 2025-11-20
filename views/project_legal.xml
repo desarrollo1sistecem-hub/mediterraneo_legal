@@ -19,6 +19,8 @@
                                 <field name="partner_id"/>
                                 <field name="start_date"/>
                                 <field name="end_date"/>
+<!--                            agregando el nuevo tipo de acuerdo-->
+                                <field name="agreement_type_id" string="Tipo de acuerdo"/>
                             </tree>
                         </field>
                     </group>
@@ -38,7 +40,7 @@
 
         </field>
     </record>
-<!--    Vista de todos lo contratos o acuerdos que tiene ese proyecto-->
+<!--    vista de todos lo contratos o acuerdos que tiene ese proyecto-->
     <record id="view_project_legal_contracts_only_form" model="ir.ui.view">
         <field name="name">project.project.legal.contracts.only.form</field>
         <field name="model">project.project</field>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_legal_task_type_tree" model="ir.ui.view">
+        <field name="name">legal.task.type.tree</field>
+        <field name="model">legal.task.type</field>
+        <field name="arch" type="xml">
+            <tree string="Tipos de tareas legales">
+                <field name="sequence"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_legal_task_type_form" model="ir.ui.view">
+        <field name="name">legal.task.type.form</field>
+        <field name="model">legal.task.type</field>
+        <field name="arch" type="xml">
+            <form string="Tipo de tarea legal">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="sequence"/>
+                        <field name="active"/>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_legal_task_type" model="ir.actions.act_window">
+        <field name="name">Tipos de tareas legales</field>
+        <field name="res_model">legal.task.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_legal_task_type"
+              name="Tipos de tareas"
+              parent="menu_legal_root"
+              action="action_legal_task_type"
+              sequence="40"/>
+</odoo>

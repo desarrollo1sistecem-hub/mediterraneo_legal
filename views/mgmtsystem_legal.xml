@@ -24,21 +24,21 @@
             (0, 0, {'view_mode': 'tree', 'view_id': ref('project.view_project')}),
             (0, 0, {'view_mode': 'form', 'view_id': ref('mediterraneo_legal.view_project_legal_contracts_only_form')})]"/>
     </record>
-
+<!--    menu raiz de legal-->
     <menuitem id="menu_legal_root"
               name="Legal"
               sequence="60"
               groups="base.group_user"
               web_icon="mediterraneo_legal,static/description/icon.png"/>
 
-
+<!--    menu de tareas de legal-->
     <menuitem id="menu_legal_actions"
               name="Tablero de Tareas"
               parent="menu_legal_root"
               action="action_mgmtsystem_legal_actions"
               sequence="20"/>
 
-
+<!--        menu de proyecto/obras de legal-->
     <menuitem id="menu_legal_projects"
               name="Obras (Legal)"
               parent="menu_legal_root"
@@ -51,7 +51,7 @@
               sequence="10"/>
 
 
-    <!-- Acción para ver y crear Acuerdos desde el módulo Legal -->
+    <!-- accion para ver y crear acuerdos desde el modulo Legal -->
     <record id="action_legal_agreements" model="ir.actions.act_window">
         <field name="name">Contratos legales</field>
         <field name="res_model">agreement</field>
@@ -76,6 +76,7 @@
                     <field name="project_id"/>
                     <field name="agreement_id"/>
                     <field name="is_legal"/>
+                     <field name="legal_task_type_id"/>
                 </group>
             </xpath>
         </field>

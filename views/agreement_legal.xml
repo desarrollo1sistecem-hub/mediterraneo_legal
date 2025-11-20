@@ -29,25 +29,25 @@
     <record id="view_agreement_form_inherit_legal" model="ir.ui.view">
         <field name="name">agreement.form.inherit.legal</field>
         <field name="model">agreement</field>
+        <!-- Heredamos la vista de agreement_legal -->
         <field name="inherit_id" ref="agreement_legal.partner_agreement_form_view"/>
         <field name="arch" type="xml">
 
-            <xpath expr="//sheet/group" position="inside">
+            <xpath expr="//sheet/group[1]" position="after">
                 <group string="Obra y Legal">
                     <field name="project_id"/>
                     <field name="legal_category"/>
                     <field name="dms_directory_id"/>
-
-
                 </group>
             </xpath>
 
             <xpath expr="//form/header" position="inside">
                 <button name="action_generar_accion_legal"
                         type="object"
-                        string="Generar Tarea legal"
+                        string="Nueva Tarea Legal"
                         class="btn-primary"/>
-                </xpath>
+            </xpath>
+
         </field>
     </record>
 </odoo>

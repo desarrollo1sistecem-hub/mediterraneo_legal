@@ -30,21 +30,32 @@
         'agreement_legal',  # OCA
         'dms',  # OCA
         'mgmtsystem',  # OCA
-        'mgmtsystem_action', #OCA
+        'mgmtsystem_action',  # OCA
     ],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         # 'views/views.xml',
-        'views/templates.xml',
-        'views/agreement_legal.xml',
+        # Cargar archivo de seguridad
+        'security/ir.model.access.csv',
+
+        # 1️⃣ Vistas de proyecto (definen view_project_legal_contracts_only_form)
         'views/project_legal.xml',
+
+        # 2️⃣ Vistas y menús main del módulo Legal (definen menu_legal_root)
         'views/mgmtsystem_legal.xml',
+
+        # 3️⃣ Vistas que dependen del menú Legal
+        'views/legal_task_type_views.xml',
+        'views/legal_action_wizard_views.xml',
+
+        # 4️⃣ Resto de vistas (esta puede ir casi donde quieras)
+        'views/agreement_legal.xml',
     ],
     'assets': {},
     'installable': True,
-    'application': True,
+    'application': False,
     'auto_install': False,
     # only loaded in demonstration mode
     'demo': [
