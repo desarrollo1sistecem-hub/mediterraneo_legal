@@ -50,7 +50,7 @@
         'views/legal_task_type_views.xml',
         'views/legal_action_wizard_views.xml',
 
-       
+
         'views/agreement_legal.xml',
     ],
     'assets': {},

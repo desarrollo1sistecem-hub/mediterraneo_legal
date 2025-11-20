@@ -90,3 +90,7 @@ class AgreementLegal(models.Model):
             },
         }
 
+    @api.onchange('project_id')
+    def _onchange_project_id_set_partner(self):
+        for rec in self:
+            rec.partner_id = rec.project_id.partner_id
