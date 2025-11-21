@@ -6,7 +6,7 @@
         <field name="model">legal.task.type</field>
         <field name="arch" type="xml">
             <tree string="Tipos de tareas legales">
-                <field name="sequence"/>
+                <field name="sequence" invisible="True"/>
                 <field name="name"/>
                 <field name="code"/>
                 <field name="active"/>
@@ -23,7 +23,7 @@
                     <group>
                         <field name="name"/>
                         <field name="code"/>
-                        <field name="sequence"/>
+                        <field name="sequence" invisible="True"/>
                         <field name="active"/>
                     </group>
                     <group>
