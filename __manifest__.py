@@ -26,6 +26,10 @@
         'purchase',
         'sale',
         'contract',
+        # 'sale_blanket',
+        # 'sale_blanket_order',
+        # 'purchase_blanket_order',
+        'contract',
         'agreement',
         'agreement_legal',  # OCA
         'dms',  # OCA
@@ -52,12 +56,12 @@
 
 
         'views/agreement_legal.xml',
+        'views/res_partner_legal.xml',
     ],
     'assets': {},
     'installable': True,
     'application': False,
     'auto_install': False,
-    # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],

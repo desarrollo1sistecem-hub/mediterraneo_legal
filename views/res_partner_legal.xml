@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_partner_form_inherit_legal" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.legal</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Añadimos una pestaña nueva -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Legal">
+                    <group>
+                        <field name="legal_state"/>
+                        <field name="legal_doc_number"/>
+                        <field name="legal_doc_valid_until"/>
+                        <field name="legal_notes"/>
+                        <field name="legal_identifier"/>
+                        <field name="legal_razon_social"/>
+                        <field name="legal_representative"/>
+                        <field name="legal_address"/>
+                        <field name="legal_tax_id"/>
+                        <field name="legal_phone"/>
+                        <field name="legal_email"/>
+                        <field name="nit_archivo" filename="nit_archivo_filename" widget="image"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
