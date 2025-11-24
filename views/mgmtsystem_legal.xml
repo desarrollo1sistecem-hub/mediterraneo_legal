@@ -64,7 +64,18 @@
               parent="menu_legal_root"
               action="action_legal_agreements"
               sequence="30"/>
+<!--    <record id="view_mgmtsystem_action_form_inherit_legal" model="ir.ui.view">-->
+<!--        <field name="name">mgmtsystem.action.form.inherit.legal</field>-->
+<!--        <field name="model">mgmtsystem.action</field>-->
+<!--        <field name="inherit_id" ref="mgmtsystem_action.view_mgmtsystem_action_form"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='date_deadline']" position="after">-->
+<!--                <field name="partner_id"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
 
+<!--    vista original sin modificar-->
     <record id="view_mgmtsystem_action_form_inherit_legal" model="ir.ui.view">
         <field name="name">mgmtsystem.action.form.inherit.legal</field>
         <field name="model">mgmtsystem.action</field>
@@ -76,10 +87,35 @@
                     <field name="project_id"/>
                     <field name="agreement_id"/>
                     <field name="is_legal"/>
-                     <field name="legal_task_type_id"/>
+                    <field name="legal_task_type_id"/>
+                    <field name="partner_id"/>
                 </group>
             </xpath>
         </field>
     </record>
+<!--    <record id="view_mgmtsystem_action_form_inherit_legal" model="ir.ui.view">-->
+<!--        <field name="name">mgmtsystem.action.form.inherit.legal</field>-->
+<!--        <field name="model">mgmtsystem.action</field>-->
+<!--        &lt;!&ndash; Heredamos el formulario original del módulo mgmtsystem_action &ndash;&gt;-->
+<!--        <field name="inherit_id" ref="mgmtsystem_action.view_mgmtsystem_action_form"/>-->
+<!--        <field name="arch" type="xml">-->
+
+<!--            &lt;!&ndash; 1) Mostrar el contacto debajo de Fecha límite &ndash;&gt;-->
+<!--            <xpath expr="//field[@name='date_deadline']" position="after">-->
+<!--                <field name="partner_id"/>-->
+<!--            </xpath>-->
+
+<!--            &lt;!&ndash; 2) Bloque de Información Legal &ndash;&gt;-->
+<!--            <xpath expr="//sheet/group" position="after">-->
+<!--                <group string="Información Legal">-->
+<!--                    <field name="project_id"/>-->
+<!--                    <field name="agreement_id"/>-->
+<!--                    <field name="is_legal"/>-->
+<!--                    <field name="legal_task_type_id"/>-->
+<!--                </group>-->
+<!--            </xpath>-->
+
+<!--        </field>-->
+<!--    </record>-->
 
 </odoo>

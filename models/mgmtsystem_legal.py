@@ -24,3 +24,9 @@ class MgmtsystemAction(models.Model):
         'legal.task.type',
         string='Tipo de tarea legal'
     )
+
+    partner_id = fields.Many2one(
+        'res.partner',
+        string='Contacto relacionado',
+        help='Contacto asociado a esta acción legal.'
+    )
